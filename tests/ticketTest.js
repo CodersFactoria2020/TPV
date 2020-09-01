@@ -1,3 +1,2 @@
-var assert = require( "chai").assert;
-var ticket = require("../tests/ticketTest.js");
-
+var assert = require("chai").assert;
+var ticket = require("../app/ticket.js");
