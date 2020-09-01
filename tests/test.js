@@ -8,6 +8,9 @@ const { response } = require("../app.js");
 chai.use(chaiHttp);
 
 describe("tickets", function () {
+  before(function () {
+    ticketJson = require("./ticket.json");
+  });
   describe("GET /tickets", function () {
     it("should return json with tickets", function () {
       chai
@@ -15,6 +18,8 @@ describe("tickets", function () {
         .get("/tickets")
         .end(function (err, res) {
           assert.equal(res.status, 200);
+          assert.typeOf(res.body, "object");
+          assert.include(res.body, { id: 1 });
         });
     });
   });
