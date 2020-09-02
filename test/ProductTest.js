@@ -13,7 +13,7 @@ describe("Product", function () {
     it("should create when posting a json to /product", function () {
       chai
         .request(app)
-        .post("/products")
+        .post("/products/api")
         .send({ name: "milk" })
         .end(function (err, res) {
           assert.equal(res.status, 200);
@@ -21,5 +21,16 @@ describe("Product", function () {
           assert.include(res.body, { name: "milk" });
         });
     });
+
+    it("should find all products on a json to /product", function () {
+        chai
+            .request(app)
+            .get("/products/api")
+            .end(function (err, res) {
+                assert.equal(res.status, 200);
+                assert.typeOf(res.body, "array");
+                 });
+    });
+
   });
 });
