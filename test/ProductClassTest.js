@@ -1,5 +1,5 @@
-//import Product from './app/Product.js';
-var Product = require ("../app/Product");
+//import Product from './app/ProductClass.js';
+var Product = require ("../app/ProductClass");
 var assert = require("chai").assert;
 
 describe("Product: ", function() {
