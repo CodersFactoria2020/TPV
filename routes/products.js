@@ -1,11 +1,11 @@
-var express = require("express");
+const express = require("express");
 const { route } = require(".");
 const Product = require("../app/Product");
 
 
-var router = express.Router();
+const router = express.Router();
 
-/* GET users listing. */
+
 router.get("/", function (req, res, next) {
   res.render("product", { title: "Subido product" });
 });
@@ -29,6 +29,29 @@ router.get("/api", function (req, res, next) {
   });
 
 });
+
+router.get("/api/:id", function (req, res, next) {
+  Product.findById( req.params.id,function (err,products){
+    if (err){
+      return console.log(err)
+    }
+    res.json(products);
+  });
+
+});
+
+router.delete("/api/:id", function (req, res, next) {
+  Product.deleteOne({_id: req.params.id}, function(err) {
+    if (err){
+      return console.log(err);
+    }
+    res.json('Successfully! Product has been Deleted.');
+  });
+
+});
+
+
+
 
 
 module.exports = router;

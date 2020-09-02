@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({name:String});
 const product = mongoose.model('product',productSchema);
@@ -23,7 +23,7 @@ product.deleteOne({
     _id : "5f4f69ba87e06523502b6597"
 }, function(err) {
     if (err){
-        console.log(err);
+        return console.log(err);
     }
-    console.log('Successfully! Employee has been Deleted.');
+    console.log('Successfully! Product has been Deleted.');
 });

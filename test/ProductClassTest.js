@@ -1,6 +1,6 @@
-//import Product from './app/ProductClass.js';
-var Product = require("../app/ProductClass");
-var assert = require("chai").assert;
+
+const Product = require("../app/ProductClass");
+const assert = require("chai").assert;
 
 describe("Product: ", function () {
   it("Check the returned product.name using: value.should.equal(value): ", function () {
