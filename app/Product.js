@@ -1,3 +1,4 @@
+
 module.exports = class Product
 {
     constructor(name, price, quantity, category)
@@ -10,7 +11,7 @@ module.exports = class Product
 
     getName(product)
     {
-       return this.name;
+        return this.name;
     }
     getPrice(product)
     {
@@ -25,3 +26,5 @@ module.exports = class Product
         return this.category;
     }
 }
+
+
