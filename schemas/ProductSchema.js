@@ -17,3 +17,13 @@ product.find({name:'milk'},function (err,product){
     }
     console.log(product)
 });
+
+
+product.deleteOne({
+    _id : "5f4f69ba87e06523502b6597"
+}, function(err) {
+    if (err){
+        console.log(err);
+    }
+    console.log('Successfully! Employee has been Deleted.');
+});
