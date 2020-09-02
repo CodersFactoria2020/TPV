@@ -1,6 +1,4 @@
 var mongoose = require('mongoose');
-const Schema = require("mongoose");
-
 
 const productSchema = new mongoose.Schema({name:String});
 const product = mongoose.model('product',productSchema);
@@ -11,4 +9,11 @@ milk.save(function (err,milk){
         return console.log(err)
     }
 
+});
+
+product.find({name:'milk'},function (err,product){
+    if (err){
+        return console.log(err)
+    }
+    console.log(product)
 });
