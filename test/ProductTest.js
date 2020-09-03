@@ -9,13 +9,11 @@ const Product = require("../app/Product");
 chai.use(chaiHttp);
 
 describe("Product", function () {
-
+    before(function (){
+        product = new Product({name:'before'});
+        product.save();
+    });
   describe("ProductAPI", function () {
-      before(function (){
-          let product = new Product({_id:'1A2B34567891', name:'before'});
-          product.save();
-          console.log(product._id);
-      })
 
     it("should create when posting a json to /product", function () {
       chai
@@ -42,10 +40,10 @@ describe("Product", function () {
       it("should find a product by id on a json to /product", function () {
           chai
               .request(app)
-              .get("/products/api/1A2B34567891")
+              .get("/products/api/"+ product._id)
               .end(function (err, res) {
                   assert.equal(res.status, 200);
-                  assert.include(res.body, { _id: "1A2B34567891" });
+                  assert.include(res.body, { _id: `${product._id}`});
                   assert.typeOf(res.body, "object");
               });
       });
@@ -53,11 +51,10 @@ describe("Product", function () {
       it("should delete a product by id on a json to /product", function () {
           chai
               .request(app)
-              .delete("/products/api/1A2B34567891")
+              .delete("/products/api/"+ product._id)
               .end(function (err, res) {
                   assert.equal(res.status, 200);
-                  assert.include(res.body, { _id: '1A2B34567891' });
-                  assert.typeOf(res.body, "object");
+                  assert.notInclude(res.body, {_id: `${product._id}`});
               });
       });
 

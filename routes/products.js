@@ -45,7 +45,12 @@ router.delete("/api/:id", function (req, res, next) {
     if (err){
       return console.log(err);
     }
-    res.json('Successfully! Product has been Deleted.');
+    Product.find({},function (err,products){
+      if (err){
+        return console.log(err)
+      }
+      res.json(products);
+    });
   });
 
 });

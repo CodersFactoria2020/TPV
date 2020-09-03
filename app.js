@@ -36,7 +36,7 @@ const mongoose = require("mongoose");
 const Schema = require("mongoose");
 
 const mongoDB =
-    "mongodb+srv://Factoria:OCaR63NfuEcgvp4A@tpv0.hfchb.mongodb.net/TPV?retryWrites=true&w=majority";
+    "mongodb+srv://Factoria:factoria_tpv@cluster0.pzomn.mongodb.net/Factoria?retryWrites=true&w=majority";
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 
 const db = mongoose.connection;
