@@ -1,56 +1,55 @@
 const express = require("express");
 const { route } = require(".");
-const Product = require("../app/Product");
+const Ticket = require("../app/Ticket");
 
 
 const router = express.Router();
 
 
 router.get("/", function (req, res, next) {
-  res.render("product", { title: "Subido product" });
-
+  res.render("ticket", { title: "Subido ticket" });
 });
 
 router.post("/api", function (req, res, next) {
-  const product = new Product(req.body);
-  product.save(function (err, product) {
+  const ticket = new Ticket(req.body);
+  ticket.save(function (err, ticket) {
     if (err) {
       return console.log(err);
     }
   });
-  res.json(product);
+  res.json(ticket);
 });
 
 router.get("/api", function (req, res, next) {
-  Product.find({},function (err,products){
+  Ticket.find({},function (err, tickets){
     if (err){
       return console.log(err)
     }
-    res.json(products);
+    res.json(tickets);
   });
 
 });
 
 router.get("/api/:id", function (req, res, next) {
-  Product.findById( req.params.id,function (err,products){
+  Ticket.findById( req.params.id,function (err, tickets){
     if (err){
       return console.log(err)
     }
-    res.json(products);
+    res.json(tickets);
   });
 
 });
 
 router.delete("/api/:id", function (req, res, next) {
-  Product.deleteOne({_id: req.params.id}, function(err) {
+  Ticket.deleteOne({_id: req.params.id}, function(err) {
     if (err){
       return console.log(err);
     }
-    Product.find({},function (err,products){
+    Ticket.find({},function (err, tickets){
       if (err){
         return console.log(err)
       }
-      res.json(products);
+      res.json(tickets);
     });
   });
 

@@ -18,7 +18,7 @@ describe("Ticket", function () {
     it("should create a ticket on a json to /tickets", function () {
       chai
         .request(app)
-        .post("/tickets")
+        .post("/tickets/api")
         .send({name:'ticket_1'})
         .end(function (err, res) {
           assert.equal(res.status, 200);
