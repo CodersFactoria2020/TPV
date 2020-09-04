@@ -8,6 +8,7 @@ const sassMiddleware = require("node-sass-middleware");
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const productsRouter = require("./routes/products");
+const ticketsRouter = require("./routes/tickets");
 
 const app = express();
 
@@ -31,12 +32,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/products", productsRouter);
+app.use("/tickets", ticketsRouter);
 
 const mongoose = require("mongoose");
 const Schema = require("mongoose");
 
 const mongoDB =
-    "mongodb+srv://Factoria:factoria_tpv@cluster0.pzomn.mongodb.net/Factoria?retryWrites=true&w=majority";
+    "mongodb+srv://Factoria:Factoria_TPV@cluster0.lhspf.mongodb.net/Factoria?retryWrites=true&w=majority";
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 
 const db = mongoose.connection;

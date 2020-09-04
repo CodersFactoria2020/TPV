@@ -1,25 +1,25 @@
 const mongoose = require('mongoose');
 
-const productSchema = new mongoose.Schema({name:String});
-const product = mongoose.model('product', productSchema);
+const ticketSchema = new mongoose.Schema({name:String});
+const ticket = mongoose.model('ticket', ticketSchema);
 
-const milk = new product({name:'milk'});
-milk.save(function (err, milk){
+const ticket1 = new ticket({name:'ticket_1'});
+ticket1.save(function (err,ticket1){
     if (err){
         return console.log(err)
     }
 
 });
 
-product.find({name:'milk'},function (err,product){
+ticket.find({name:'ticket_1'},function (err,ticket){
     if (err){
         return console.log(err)
     }
-    console.log(product)
+    console.log(ticket)
 });
 
 
-product.deleteOne({
+ticket.deleteOne({
     _id : "5f4f69ba87e06523502b6597"
 }, function(err) {
     if (err){
